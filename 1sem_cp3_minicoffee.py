@@ -19,4 +19,20 @@ def mostrar_cardapio(cardapio):
     for array in cardapio:
         print(f'{array[0].ljust(8)} | {array[1].ljust(15)} | {array[2]}')
 
+opicao = -1
+while opicao != 0:
+    mostrar_cardapio(cardapio)
+    print('\n\n')
+    print('----MENU----'.center(35))
+    print('1 - Adicionar produto ao carrinho')
+    print('0 - Encerrar Compra')
+    print(f'{'-' * 30}')
+    opicao = int(input('Digite a opição desejada: '))
 
+    if opicao == 1:
+        codigo_compra = input('Digite o código do produto desejado: ')
+        qnt_compra = int(input('Digite a quantidade desejada: '))
+        print('Item adicionado ao pedido\n\n\n')
+        print(f'{'=~' * 10}\n\n')
+    else:
+        continue
