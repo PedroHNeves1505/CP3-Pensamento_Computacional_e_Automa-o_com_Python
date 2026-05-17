@@ -13,9 +13,10 @@ cardapio = [
     ['103', 'Refigerante', 10.0],
 ]
 
-print('----CARDÁPIO----'.center(35))
-print(f'{'CÓDIGO'.ljust(8)} | {'PRODUTO'.ljust(15)} | PREÇO')
 def mostrar_cardapio(cardapio):
+    print('----CARDÁPIO----'.center(35))
+    print(f'{'CÓDIGO'.ljust(8)} | {'PRODUTO'.ljust(15)} | PREÇO')
     for array in cardapio:
         print(f'{array[0].ljust(8)} | {array[1].ljust(15)} | {array[2]}')
+
 
