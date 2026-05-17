@@ -18,6 +18,9 @@ def mostrar_cardapio(cardapio):
     for array in cardapio:
         print(f'{array[0].ljust(8)} | {array[1].ljust(15)} | {array[2]}')
 
+def calcular_subtotal(preco, qnt):
+    return preco * qnt
+
 opicao = -1
 carrinho = []        
 qnt_comprados = []   
@@ -40,22 +43,22 @@ while opicao != 0:
             case '100':
                 carrinho.append('Expresso')
                 qnt_comprados.append(qnt_compra)
-                subtotais.append(5 * qnt_compra)
+                subtotais.append(calcular_subtotal(5, qnt_compra))
                 print('Item adicionado ao pedido\n\n\n')
             case '101': 
                 carrinho.append('Café com Leite')
                 qnt_comprados.append(qnt_compra)
-                subtotais.append(6 * qnt_compra)
+                subtotais.append(calcular_subtotal(6, qnt_compra))
                 print('Item adicionado ao pedido\n\n\n')
             case '102': 
                 carrinho.append('Pão de Queijo')
                 qnt_comprados.append(qnt_compra)
-                subtotais.append(7 * qnt_compra)
+                subtotais.append(calcular_subtotal(7, qnt_compra))
                 print('Item adicionado ao pedido\n\n\n')
             case '103': 
                 carrinho.append('Refrigerante')
                 qnt_comprados.append(qnt_compra)
-                subtotais.append(10 * qnt_compra)
+                subtotais.append(calcular_subtotal(10, qnt_compra))
                 print('Item adicionado ao pedido\n\n\n')
             case _:
                 print('Item inexistente! Tente novamente')
