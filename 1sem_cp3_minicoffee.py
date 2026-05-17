@@ -1,7 +1,6 @@
 # RM: 571382 - Pedro Henrique Neves
 # RM: 572733 - Akin Alexandre Mendes Martin 
 # RM: 570544 - Maria Eduarda Rocha Benjamin
-
 nome = input('Digite seu nome: ')
 qnt_letras = len(nome)
 primeira_letra = nome[0]
@@ -20,19 +19,46 @@ def mostrar_cardapio(cardapio):
         print(f'{array[0].ljust(8)} | {array[1].ljust(15)} | {array[2]}')
 
 opicao = -1
+carrinho = []        
+qnt_comprados = []   
+subtotais = []       
+
 while opicao != 0:
     mostrar_cardapio(cardapio)
     print('\n\n')
     print('----MENU----'.center(35))
     print('1 - Adicionar produto ao carrinho')
     print('0 - Encerrar Compra')
-    print(f'{'-' * 30}')
+    print(f"{'-' * 30}")
     opicao = int(input('Digite a opição desejada: '))
 
     if opicao == 1:
         codigo_compra = input('Digite o código do produto desejado: ')
         qnt_compra = int(input('Digite a quantidade desejada: '))
-        print('Item adicionado ao pedido\n\n\n')
-        print(f'{'=~' * 10}\n\n')
+        
+        match codigo_compra:
+            case '100':
+                carrinho.append('Expresso')
+                qnt_comprados.append(qnt_compra)
+                subtotais.append(5 * qnt_compra)
+                print('Item adicionado ao pedido\n\n\n')
+            case '101': 
+                carrinho.append('Café com Leite')
+                qnt_comprados.append(qnt_compra)
+                subtotais.append(6 * qnt_compra)
+                print('Item adicionado ao pedido\n\n\n')
+            case '102': 
+                carrinho.append('Pão de Queijo')
+                qnt_comprados.append(qnt_compra)
+                subtotais.append(7 * qnt_compra)
+                print('Item adicionado ao pedido\n\n\n')
+            case '103': 
+                carrinho.append('Refrigerante')
+                qnt_comprados.append(qnt_compra)
+                subtotais.append(10 * qnt_compra)
+                print('Item adicionado ao pedido\n\n\n')
+            case _:
+                print('Item inexistente! Tente novamente')
+        print(f"{'=~' * 10}\n\n")
     else:
         continue
