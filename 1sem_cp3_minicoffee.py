@@ -1,6 +1,7 @@
 # RM: 571382 - Pedro Henrique Neves
 # RM: 572733 - Akin Alexandre Mendes Martin 
 # RM: 570544 - Maria Eduarda Rocha Benjamin
+
 nome = input('Digite seu nome: ')
 qnt_letras = len(nome)
 primeira_letra = nome[0]
@@ -39,29 +40,60 @@ while opicao != 0:
         codigo_compra = input('Digite o código do produto desejado: ')
         qnt_compra = int(input('Digite a quantidade desejada: '))
         
+        nome_produto = ""
+        preco_unitario = 0
+        
         match codigo_compra:
             case '100':
-                carrinho.append('Expresso')
-                qnt_comprados.append(qnt_compra)
-                subtotais.append(calcular_subtotal(5, qnt_compra))
-                print('Item adicionado ao pedido\n\n\n')
+                nome_produto = 'Expresso'
+                preco_unitario = 5
             case '101': 
-                carrinho.append('Café com Leite')
-                qnt_comprados.append(qnt_compra)
-                subtotais.append(calcular_subtotal(6, qnt_compra))
-                print('Item adicionado ao pedido\n\n\n')
+                nome_produto = 'Café com Leite'
+                preco_unitario = 6
             case '102': 
-                carrinho.append('Pão de Queijo')
-                qnt_comprados.append(qnt_compra)
-                subtotais.append(calcular_subtotal(7, qnt_compra))
-                print('Item adicionado ao pedido\n\n\n')
+                nome_produto = 'Pão de Queijo'
+                preco_unitario = 7
             case '103': 
-                carrinho.append('Refrigerante')
-                qnt_comprados.append(qnt_compra)
-                subtotais.append(calcular_subtotal(10, qnt_compra))
-                print('Item adicionado ao pedido\n\n\n')
+                nome_produto = 'Refrigerante'
+                preco_unitario = 10
             case _:
                 print('Item inexistente! Tente novamente')
-        print(f"{'=~' * 10}\n\n")
-    else:
-        continue
+                continue  
+
+        if nome_produto in carrinho:
+            indice = carrinho.index(nome_produto)
+            
+            qnt_comprados[indice] += qnt_compra
+            subtotais[indice] += preco_unitario * qnt_compra
+        else:
+            carrinho.append(nome_produto)
+            qnt_comprados.append(qnt_compra)
+            subtotais.append(preco_unitario * qnt_compra)
+            
+        print('Item adicionado ao pedido\n\n\n')
+
+produtos_comprados = ""
+quantidade_produto = ""
+subtotal_produtos = ""
+valor_total = 0
+
+for i in range(len(carrinho)):
+    produtos_comprados += f'| {carrinho[i]}'.ljust(20)
+
+for i in range(len(qnt_comprados)):
+    quantidade_produto += f'| {qnt_comprados[i]}'.ljust(8)
+
+for i in range(len(subtotais)):
+    subtotal_produtos += f'| {subtotais[i]}'
+
+for i in range(len(subtotais)):
+    valor_total += subtotais[i]
+
+print('----Resumo Final----')
+print(f'Cliente: {nome}')
+print(f'Quantidade de letras: {qnt_letras}')
+print(f'Primeira letra: {primeira_letra}')
+print(f'Produtos comprados:         {produtos_comprados}')
+print(f'Quantidade de cada produto: {quantidade_produto}')
+print(f'Subtotalde cadaproduto:     {subtotal_produtos}')
+print(f'Total do pedido: {valor_total}')
