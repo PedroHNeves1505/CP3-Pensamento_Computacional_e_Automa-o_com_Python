@@ -84,7 +84,7 @@ for i in range(len(qnt_comprados)):
     quantidade_produto += f'| {qnt_comprados[i]}'.ljust(8)
 
 for i in range(len(subtotais)):
-    subtotal_produtos += f'| {subtotais[i]}'
+    subtotal_produtos += f'| R$ {subtotais[i]:.2f} '
 
 for i in range(len(subtotais)):
     valor_total += subtotais[i]
@@ -96,4 +96,12 @@ print(f'Primeira letra: {primeira_letra}')
 print(f'Produtos comprados:         {produtos_comprados}')
 print(f'Quantidade de cada produto: {quantidade_produto}')
 print(f'Subtotalde cadaproduto:     {subtotal_produtos}')
-print(f'Total do pedido: {valor_total}')
+print(f'Total do pedido: R${valor_total:.2f}')
+
+print('\n\n\n----Mensagem Final----')
+if valor_total >= 40:
+    print('Cliente ganhou um brinde!')
+elif valor_total >=25:
+    print('Cliente ganhou um cupom para a próxima compra!')
+else:
+    print('Obrigado pela compra!')
